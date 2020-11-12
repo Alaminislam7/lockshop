@@ -1,5 +1,6 @@
 import React from 'react'
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 
 const Header = () => {
 
@@ -7,28 +8,33 @@ const Header = () => {
         <header>
             <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
                 <Container>
-                    <Navbar.Brand>ProShop</Navbar.Brand>
+                    <LinkContainer to='/'>
+                        <Navbar.Brand>HurrayShop</Navbar.Brand>
+                    </LinkContainer>
                     <Navbar.Toggle aria-controls='basic-navbar-nav' />
                     <Navbar.Collapse id='basic-navbar-nav'>
                         <Nav className='ml-auto'>
-                            <Nav.Link>
-                                <i className='fas fa-shopping-cart'></i> Cart
-                </Nav.Link>
-                            <NavDropdown title='ALAMIN' id='username'>
-                                <NavDropdown.Item>Profile</NavDropdown.Item>
-                                <NavDropdown.Item >
-                                    Logout
-                  </NavDropdown.Item>
-                            </NavDropdown>
-                            <Nav.Link>
-                                <i className='fas fa-user'></i> Sign In
-                  </Nav.Link>
-
-                            <NavDropdown title='Admin' id='adminmenu'>
-                                <NavDropdown.Item>Users</NavDropdown.Item>
-                                <NavDropdown.Item>Products</NavDropdown.Item>
-                                <NavDropdown.Item>Orders</NavDropdown.Item>
-                            </NavDropdown>
+                            <LinkContainer to='/cart'>
+                                <Nav.Link>
+                                    <i className='fas fa-shopping-cart'></i> Cart
+                                </Nav.Link>
+                            </LinkContainer>
+                                    <LinkContainer to='/login'>
+                                        <Nav.Link>
+                                            <i className='fas fa-user'></i> Sign In
+                                        </Nav.Link>
+                                    </LinkContainer>
+                                <NavDropdown title='Admin' id='adminmenu'>
+                                    <LinkContainer to='/admin/userlist'>
+                                        <NavDropdown.Item>Users</NavDropdown.Item>
+                                    </LinkContainer>
+                                    <LinkContainer to='/admin/productlist'>
+                                        <NavDropdown.Item>Products</NavDropdown.Item>
+                                    </LinkContainer>
+                                    <LinkContainer to='/admin/orderlist'>
+                                        <NavDropdown.Item>Orders</NavDropdown.Item>
+                                    </LinkContainer>
+                                </NavDropdown>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
